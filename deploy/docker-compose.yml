@@ -1,0 +1,28 @@
+services:
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile.sqlserver
+    ports:
+      - "1433:1433"
+    volumes:
+      - mssql_data:/var/opt/mssql
+  
+  company-api:
+    build:
+      context: ..
+      dockerfile: CompanyApi/Dockerfile
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+  
+  company-spa:
+    build:
+      context: ..
+      dockerfile: company-spa/Dockerfile
+    ports:
+      - "4200:80"
+    restart: always
+    
+volumes:
+  mssql_data:

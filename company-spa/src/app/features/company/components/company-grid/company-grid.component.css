@@ -1,0 +1,27 @@
+/* Make sure the table takes full width and collapse borders */
+.mat-table {
+    border-collapse: collapse;
+    background-color: #ffffff;
+  }
+  
+  /* Set default padding, border, and alignment for header and data cells */
+  .mat-header-cell,
+  .mat-cell {
+    padding: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.12); /* light border similar to Angular Material defaults */
+    text-align: left;
+  }
+  
+  /* Header cells: give a distinct background and font style */
+  .mat-header-cell {
+    background-color: #f0f0f0;
+    color: #333;
+    font-weight: 600;
+  }
+  
+  /* Data cells: ensure consistent background and color */
+  .mat-cell {
+    background-color: #ffffff;
+    color: #333;
+  }
+  

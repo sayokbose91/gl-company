@@ -1,0 +1,28 @@
+FROM mcr.microsoft.com/mssql/server:2019-latest
+
+ENV ACCEPT_EULA=Y
+ENV SA_PASSWORD=YourStrong!Passw0rd
+
+# Switch to the root user to install packages
+USER root
+
+# Install prerequisites and mssql-tools
+RUN apt-get update && \
+    apt-get install -y curl apt-transport-https gnupg2 && \
+    curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
+    curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list > /etc/apt/sources.list.d/mssql-release.list && \
+    apt-get update && \
+    ACCEPT_EULA=Y apt-get install -y mssql-tools unixodbc-dev && \
+    rm -rf /var/lib/apt/lists/*
+
+# Switch back to the mssql user (the official image runs SQL Server as non-root)
+USER mssql
+
+WORKDIR /app
+COPY configure-and-seed.sql /configure-and-seed.sql
+
+CMD /bin/bash -c "/opt/mssql/bin/sqlservr & \
+    sleep 120 && \
+    /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P 'YourStrong!Passw0rd' -i /configure-and-seed.sql && \
+    echo 'Database configuration and seeding completed.' && \
+    tail -f /dev/null"

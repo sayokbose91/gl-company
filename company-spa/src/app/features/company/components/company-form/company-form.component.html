@@ -1,0 +1,52 @@
+<div class="company-form-container">
+    <form [formGroup]="companyForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Company Name</mat-label>
+        <input matInput formControlName="name" placeholder="Enter company name">
+        <mat-error *ngIf="companyForm.get('name')?.hasError('required')">
+          Company Name is required
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Exchange</mat-label>
+        <input matInput formControlName="exchange" placeholder="Enter exchange">
+        <mat-error *ngIf="companyForm.get('exchange')?.hasError('required')">
+          Exchange is required
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Ticker</mat-label>
+        <input matInput formControlName="ticker" placeholder="Enter ticker">
+        <mat-error *ngIf="companyForm.get('ticker')?.hasError('required')">
+          Ticker is required
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>ISIN</mat-label>
+        <input matInput formControlName="isin" placeholder="Enter ISIN">
+        <mat-error *ngIf="companyForm.get('isin')?.hasError('required')">
+          ISIN is required
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Website</mat-label>
+        <input matInput formControlName="website" placeholder="Enter website URL">
+      </mat-form-field>
+  
+      <button mat-raised-button color="primary" type="submit" [disabled]="isSubmitting">
+        Submit
+      </button>
+  
+      <div *ngIf="errorMessage" class="error">
+        {{ errorMessage }}
+      </div>
+      <div *ngIf="successMessage" class="success">
+        {{ successMessage }}
+      </div>
+    </form>
+  </div>
+  
