@@ -83,6 +83,8 @@ The repository includes Dockerfiles for both the API and SPA along with a `docke
 2. **Access the Application:**
    - **API:** [http://localhost:8080](http://localhost:8080) (and/or port 8081)
    - **SPA:** [http://localhost:4200](http://localhost:4200)
+   - Db takes roughly 3-4 mins to start. (As it configues and seeds data) wait till you dont see "Database configuration and seeding completed." in db container log.
+
 
 ## Database Setup
 
@@ -97,7 +99,7 @@ The database is set up as a container and includes seeding of initial data. The 
    ```
 3. **Run the database container:**
    ```bash
-   docker-compose up -d
+   docker-compose up
    ```
 4. **Check Container Logs for Confirmation:**
    Run the following command to ensure database configuration and seeding have been completed successfully:
