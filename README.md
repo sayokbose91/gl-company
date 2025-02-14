@@ -27,7 +27,7 @@ Company Application is a Single Page Application built with Angular (frontend) a
 1. **Clone the Repository:**
    ```bash
    git clone https://github.com/sayokbose91/Company.git
-   cd Company/CompanyApi
+   cd gl-company/CompanyApi
    ```
 2. **Restore and Build the API:**
    ```bash
@@ -76,8 +76,9 @@ The repository includes Dockerfiles for both the API and SPA along with a `docke
 
 1. **Build and Start the Containers:**
    ```bash
-   cd ./deploy
+   cd gl-company/deploy
    docker-compose up --build
+   docker compose up --build //if using latest docker compose
    ```
 2. **Access the Application:**
    - **API:** [http://localhost:8080](http://localhost:8080) (and/or port 8081)
